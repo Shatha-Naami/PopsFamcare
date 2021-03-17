@@ -14,7 +14,8 @@ class CalenderComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(margin: EdgeInsets.only(left: 4,right: 4),
+    return Container(
+      margin: EdgeInsets.only(left: 4, right: 4),
       child: Row(
         children: [
           Expanded(
@@ -32,7 +33,7 @@ class CalenderComponent extends StatelessWidget {
                         color: Color(0xffF7F7F7)),
                     margin: EdgeInsets.only(top: 12),
                     padding:
-                    EdgeInsets.only(left: 12, right: 12, top: 6, bottom: 6),
+                        EdgeInsets.only(left: 12, right: 12, top: 6, bottom: 6),
                     child: Text(title,
                         style: GoogleFonts.almarai(
                             fontWeight: FontWeight.w400, fontSize: 16),
@@ -92,7 +93,6 @@ class CalenderComponent extends StatelessWidget {
             ),
             flex: 1,
           ),
-
         ],
       ),
     );

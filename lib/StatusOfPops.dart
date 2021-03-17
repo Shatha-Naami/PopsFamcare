@@ -18,49 +18,77 @@ class _StatusOfPopsState extends State<StatusOfPops> {
             SizedBox(height: 100),
             FlatButton(
               onPressed: () => onNavigator(
-                  showImage: true, showCalender: true, showBackButton: true,showSuccess: false,cancelMeeting:false),
+                  showImage: true,
+                  showCalender: true,
+                  showBackButton: true,
+                  showSuccess: false,
+                  cancelMeeting: false),
               child: Text('Default State'),
               color: Colors.orange[200],
             ),
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => onNavigator(
-                  showImage: false, showCalender: true, showBackButton: true,showSuccess: false,cancelMeeting:false),
+                  showImage: false,
+                  showCalender: true,
+                  showBackButton: true,
+                  showSuccess: false,
+                  cancelMeeting: false),
               child: Text('Without Photo'),
               color: Colors.pink[200],
             ),
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => onNavigator(
-                  showImage: true, showCalender: false, showBackButton: true,showSuccess: false,cancelMeeting:false),
+                  showImage: true,
+                  showCalender: false,
+                  showBackButton: true,
+                  showSuccess: false,
+                  cancelMeeting: false),
               child: Text('Without Calender'),
               color: Colors.purple[200],
             ),
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => onNavigator(
-                  showImage: false, showCalender: false, showBackButton: true,showSuccess: false,cancelMeeting:false),
+                  showImage: false,
+                  showCalender: false,
+                  showBackButton: true,
+                  showSuccess: false,
+                  cancelMeeting: false),
               child: Text('Without Photo & Without Calender'),
               color: Colors.amberAccent[200],
             ),
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => onNavigator(
-                  showImage: false, showCalender: false, showBackButton: false,showSuccess: false,cancelMeeting:false),
+                  showImage: false,
+                  showCalender: false,
+                  showBackButton: false,
+                  showSuccess: false,
+                  cancelMeeting: false),
               child: Text('Without Photo & Without Calender & Without Back'),
               color: Colors.lightBlue[200],
             ),
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => onNavigator(
-                  showImage: false, showCalender: true, showBackButton: false,showSuccess: true,cancelMeeting:false),
+                  showImage: false,
+                  showCalender: true,
+                  showBackButton: false,
+                  showSuccess: true,
+                  cancelMeeting: false),
               child: Text('Success Item'),
               color: Colors.tealAccent[200],
             ),
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => onNavigator(
-                  showImage: false, showCalender: true, showBackButton: false,showSuccess: true,cancelMeeting:true),
+                  showImage: false,
+                  showCalender: true,
+                  showBackButton: false,
+                  showSuccess: true,
+                  cancelMeeting: true),
               child: Text('Cancel Meeting'),
               color: Colors.red[200],
             )
@@ -74,7 +102,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
       {bool showImage,
       bool showCalender,
       bool showBackButton,
-      bool showSuccess,bool cancelMeeting}) {
+      bool showSuccess,
+      bool cancelMeeting}) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -82,7 +111,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
           showImage: showImage,
           showCalender: showCalender,
           showBackButton: showBackButton,
-          showSuccess: showSuccess,cancelMeeting: cancelMeeting,
+          showSuccess: showSuccess,
+          cancelMeeting: cancelMeeting,
         ),
       ),
     );

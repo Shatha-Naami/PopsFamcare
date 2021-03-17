@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: key,debugShowCheckedModeBanner: false,
+      navigatorKey: key,
+      debugShowCheckedModeBanner: false,
       home: StatusOfPops(),
     );
   }
