@@ -29,7 +29,7 @@ class CancelMeetingWidget extends StatelessWidget {
           color: Color(0xff7F7FF8),
           size: 22,
           background: Color(0xffF4F5F8),
-          onTapped: () => print('change time'),
+          onTapped: ()  { Navigator.pop(context);print('change time');},
         ),
       ],
     );

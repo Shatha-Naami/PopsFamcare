@@ -56,7 +56,7 @@ class CalenderComponent extends StatelessWidget {
           Expanded(
             child: Container(
               height: 120,
-              padding: EdgeInsets.only(left: 12, right: 12),
+              // padding: EdgeInsets.only(left: 12, right: 12),
               margin: EdgeInsets.only(left: 4, top: 12, bottom: 12, right: 4),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(18)),

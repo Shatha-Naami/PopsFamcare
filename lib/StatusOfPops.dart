@@ -1,4 +1,5 @@
 import 'package:famcare/MainComponents/PopsFamcareComponent.dart';
+import 'package:famcare/Utils/StaticData.dart';
 import 'package:flutter/material.dart';
 
 class StatusOfPops extends StatefulWidget {
@@ -22,7 +23,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                   showCalender: true,
                   showBackButton: true,
                   showSuccess: false,
-                  cancelMeeting: false),
+                  cancelMeeting: false,
+                  heightContainer: MediaQuery.of(context).size.height - 20),
               child: Text('Default State'),
               color: Colors.orange[200],
             ),
@@ -33,7 +35,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                   showCalender: true,
                   showBackButton: true,
                   showSuccess: false,
-                  cancelMeeting: false),
+                  cancelMeeting: false,
+                  heightContainer: MediaQuery.of(context).size.width *1.2),
               child: Text('Without Photo'),
               color: Colors.pink[200],
             ),
@@ -44,7 +47,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                   showCalender: false,
                   showBackButton: true,
                   showSuccess: false,
-                  cancelMeeting: false),
+                  cancelMeeting: false,
+                  heightContainer: MediaQuery.of(context).size.width *1.5),
               child: Text('Without Calender'),
               color: Colors.purple[200],
             ),
@@ -55,7 +59,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                   showCalender: false,
                   showBackButton: true,
                   showSuccess: false,
-                  cancelMeeting: false),
+                  cancelMeeting: false,
+                  heightContainer: MediaQuery.of(context).size.width*0.82),
               child: Text('Without Photo & Without Calender'),
               color: Colors.amberAccent[200],
             ),
@@ -66,7 +71,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                   showCalender: false,
                   showBackButton: false,
                   showSuccess: false,
-                  cancelMeeting: false),
+                  cancelMeeting: false,
+                  heightContainer: MediaQuery.of(context).size.width*0.65),
               child: Text('Without Photo & Without Calender & Without Back'),
               color: Colors.lightBlue[200],
             ),
@@ -77,7 +83,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                   showCalender: true,
                   showBackButton: false,
                   showSuccess: true,
-                  cancelMeeting: false),
+                  cancelMeeting: false,
+                  heightContainer: MediaQuery.of(context).size.width *1.1),
               child: Text('Success Item'),
               color: Colors.tealAccent[200],
             ),
@@ -88,7 +95,8 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                   showCalender: true,
                   showBackButton: false,
                   showSuccess: true,
-                  cancelMeeting: true),
+                  cancelMeeting: true,
+                  heightContainer: MediaQuery.of(context).size.width*0.7),
               child: Text('Cancel Meeting'),
               color: Colors.red[200],
             )
@@ -103,18 +111,26 @@ class _StatusOfPopsState extends State<StatusOfPops> {
       bool showCalender,
       bool showBackButton,
       bool showSuccess,
-      bool cancelMeeting}) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PopsFamCareComponent(
-          showImage: showImage,
-          showCalender: showCalender,
-          showBackButton: showBackButton,
-          showSuccess: showSuccess,
-          cancelMeeting: cancelMeeting,
-        ),
-      ),
-    );
+      bool cancelMeeting,
+      double heightContainer}) {
+    showDialog(
+        context: context,
+        child: AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          contentPadding: EdgeInsets.all(0.0),
+          content: Container(
+            height: heightContainer,
+            width: widthScreen,
+            margin: EdgeInsets.all(12),
+            child: PopsFamCareComponent(
+              showImage: showImage,
+              showCalender: showCalender,
+              showBackButton: showBackButton,
+              showSuccess: showSuccess,
+              cancelMeeting: cancelMeeting,
+            ),
+          ),
+        ));
   }
 }
