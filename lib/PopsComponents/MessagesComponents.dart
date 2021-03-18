@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MessagesComponents extends StatelessWidget {
   final String title;
+  final String fontFamily;
   final FontWeight fontWeight;
   final double fontSize;
   final double heightText;
@@ -16,15 +16,19 @@ class MessagesComponents extends StatelessWidget {
       this.fontSize,
       this.heightText = 1,
       this.width,
-      this.margin})
+      this.margin,
+      this.fontFamily = 'Famtree-Regular'})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
         child: Text(title,
-            style: GoogleFonts.almarai(
-                fontWeight: fontWeight, fontSize: fontSize, height: heightText),
+            style: TextStyle(
+                fontWeight: fontWeight,
+                fontSize: fontSize,
+                height: heightText,
+                fontFamily: fontFamily),
             textAlign: TextAlign.center),
         margin: margin,
         width: width);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CalenderComponent extends StatelessWidget {
   final String title;
@@ -7,9 +6,16 @@ class CalenderComponent extends StatelessWidget {
   final int date;
   final String month;
   final String time;
+  final String fontFamily;
 
   CalenderComponent(
-      {Key key, this.titleDay, this.title, this.date, this.month, this.time})
+      {Key key,
+      this.titleDay,
+      this.title,
+      this.date,
+      this.month,
+      this.time,
+      this.fontFamily = 'Famtree-Regular'})
       : super(key: key);
 
   @override
@@ -20,7 +26,7 @@ class CalenderComponent extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              height: 120,
+              height: 110,
               margin: EdgeInsets.only(left: 4),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -31,20 +37,24 @@ class CalenderComponent extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(18)),
                         color: Color(0xffF7F7F7)),
-                    margin: EdgeInsets.only(top: 12),
+                    margin: EdgeInsets.only(top: 6),
                     padding:
-                        EdgeInsets.only(left: 12, right: 12, top: 6, bottom: 6),
+                        EdgeInsets.only(left: 38, right: 38, top: 3, bottom: 3),
                     child: Text(title,
-                        style: GoogleFonts.almarai(
-                            fontWeight: FontWeight.w400, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            fontFamily: fontFamily),
                         textAlign: TextAlign.center),
                   ),
                   Spacer(),
                   Container(
                     margin: EdgeInsets.only(bottom: 12),
                     child: Text(time,
-                        style: GoogleFonts.almarai(
-                            fontWeight: FontWeight.bold, fontSize: 22),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            fontFamily: fontFamily),
                         textAlign: TextAlign.center),
                   ),
                   Spacer(),
@@ -55,8 +65,8 @@ class CalenderComponent extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              height: 120,
-              // padding: EdgeInsets.only(left: 12, right: 12),
+              height: 110,
+              // padding: EdgeInsets.only(bottom: 4),
               margin: EdgeInsets.only(left: 4, top: 12, bottom: 12, right: 4),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -67,25 +77,33 @@ class CalenderComponent extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(18)),
                         color: Color(0xffF7F7F7)),
-                    margin: EdgeInsets.only(top: 12),
+                    margin: EdgeInsets.only(top: 6),
                     padding:
-                        EdgeInsets.only(left: 14, right: 14, top: 6, bottom: 6),
+                        EdgeInsets.only(left: 16, right: 16, top: 3, bottom: 3),
                     child: Text(titleDay,
-                        style: GoogleFonts.almarai(
-                            fontWeight: FontWeight.w400, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            fontFamily: fontFamily),
                         textAlign: TextAlign.center),
                   ),
+                  SizedBox(height: 12),
                   Container(
                     child: Text(date.toString(),
-                        style: GoogleFonts.almarai(
-                            fontWeight: FontWeight.bold, fontSize: 34),
+                        style: TextStyle(
+                            fontFamily: fontFamily,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28),
                         textAlign: TextAlign.center),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: 12),
+                    margin: EdgeInsets.all(0),
                     child: Text(month,
-                        style: GoogleFonts.almarai(
-                            fontWeight: FontWeight.w600, fontSize: 16),
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            fontFamily: fontFamily),
                         textAlign: TextAlign.center),
                   ),
                 ],
