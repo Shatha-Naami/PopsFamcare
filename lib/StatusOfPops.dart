@@ -20,8 +20,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
             SizedBox(height: 100),
             FlatButton(
               onPressed: () => FamAlertDialog.showDialog(
-                  addImageOption: true,
-                  addSpecificComponentOption: true,
                   specificComponent: CalenderComponent(
                       title: 'توقيت الجلسة',
                       titleDay: 'الثلاثاء',
@@ -45,7 +43,7 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                           print('change time');
                         }),
                     ButtonComponent(
-                        title: 'إغلاق',
+                        title: 'تراجع',
                         color: Colors.black,
                         background: Color(0xffF4F5F8),
                         size: 20,
@@ -73,12 +71,10 @@ class _StatusOfPopsState extends State<StatusOfPops> {
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => FamAlertDialog.showDialog(
-                  addImageOption: false,
-
                   context: context,
                   mainTitle: 'تأكيد الإلغاء',
                   subTitle: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
-                  heightContainer: MediaQuery.of(context).size.width * 1.22,
+                  heightContainer: MediaQuery.of(context).size.width * 1.26,
                 buttons: [
                   ButtonComponent(
                       title:'تعديل الموعد',
@@ -92,7 +88,7 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                         print('change time');
                       }),
                   ButtonComponent(
-                      title: 'إغلاق',
+                      title: 'تراجع',
                       color: Colors.black,
                       background: Color(0xffF4F5F8),
                       size: 20,
@@ -111,7 +107,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                     },
                   ),
                 ],
-                addSpecificComponentOption: true,
                 specificComponent: CalenderComponent(
                     title: 'توقيت الجلسة',
                     titleDay: 'الثلاثاء',
@@ -125,9 +120,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => FamAlertDialog.showDialog(
-                  addImageOption: true,
-                  addSpecificComponentOption: false,
-
                   imagePath: 'assets/images/cancel_image.png',
                   context: context,
                   buttons: [
@@ -143,7 +135,7 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                           print('change time');
                         }),
                     ButtonComponent(
-                        title: 'إغلاق',
+                        title: 'تراجع',
                         color: Colors.black,
                         background: Color(0xffF4F5F8),
                         size: 20,
@@ -171,8 +163,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => FamAlertDialog.showDialog(
-                  addImageOption: false,
-                  addSpecificComponentOption: false,
                   buttons: [
                     ButtonComponent(
                         title:'تعديل الموعد',
@@ -186,7 +176,7 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                           print('change time');
                         }),
                     ButtonComponent(
-                        title: 'إغلاق',
+                        title: 'تراجع',
                         color: Colors.black,
                         background: Color(0xffF4F5F8),
                         size: 20,
@@ -215,8 +205,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => FamAlertDialog.showDialog(
-                  addImageOption: false,
-                  addSpecificComponentOption: false,
                   context: context,
                   mainTitle: 'تأكيد الإلغاء',
                   subTitle: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
@@ -250,8 +238,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => FamAlertDialog.showDialog(
-                  addImageOption: true,
-                  addSpecificComponentOption: true,
                   imagePath: 'https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/preview_image/tutorial-preview-small.png',
                   specificComponent: CalenderComponent(
                       title: 'توقيت الجلسة',
@@ -284,15 +270,13 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                         }),
                   ],
                   context: context,disappearAuto:true,
-                  heightContainer: MediaQuery.of(context).size.width * 1.1),
+                  heightContainer: MediaQuery.of(context).size.width * 1.15),
               child: Text('Success Item'),
               color: Colors.tealAccent[200],
             ),
             SizedBox(height: 32),
             FlatButton(
               onPressed: () => FamAlertDialog.showDialog(
-                  addImageOption: true,
-                  addSpecificComponentOption: false,
                   imagePath: 'https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/preview_image/tutorial-preview-small.png',
                   mainTitle: 'تم إلغاء الجلسة',
                   subTitle: 'ننتظركم في جلسة جديدة',
@@ -309,7 +293,7 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                           print('back');
                         }),
                   ],disappearAuto:true,
-                  heightContainer: MediaQuery.of(context).size.width * 0.75),
+                  heightContainer: MediaQuery.of(context).size.width * 0.78),
               child: Text('Cancel Meeting'),
               color: Colors.red[200],
             )

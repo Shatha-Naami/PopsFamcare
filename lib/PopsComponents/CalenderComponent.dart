@@ -39,7 +39,7 @@ class CalenderComponent extends StatelessWidget {
                         color: Color(0xffF7F7F7)),
                     margin: EdgeInsets.only(top: 6),
                     padding:
-                        EdgeInsets.only(left: 38, right: 38, top: 3, bottom: 3),
+                        EdgeInsets.only(left: 56, right: 56, top: 3, bottom: 3),
                     child: Text(title,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
@@ -79,7 +79,7 @@ class CalenderComponent extends StatelessWidget {
                         color: Color(0xffF7F7F7)),
                     margin: EdgeInsets.only(top: 6),
                     padding:
-                        EdgeInsets.only(left: 16, right: 16, top: 3, bottom: 3),
+                        EdgeInsets.only(left: 22, right: 22, top: 3, bottom: 3),
                     child: Text(titleDay,
                         style: TextStyle(
                             fontWeight: FontWeight.w400,

@@ -5,26 +5,24 @@ import 'package:ndialog/ndialog.dart';
 
 class FamAlertDialog {
   static showDialog(
-      {bool addImageOption,
-      bool addSpecificComponentOption,
-      BuildContext context,
+      {BuildContext context,
       double heightContainer,
-      String imagePath, bool disappearAuto,
+      String imagePath,
+      bool disappearAuto = false,
       String mainTitle,
       String subTitle,
       Widget specificComponent,
       List<Widget> buttons}) {
     NAlertDialog(
-      title: null,
+      title: null, dialogStyle: DialogStyle(titlePadding: EdgeInsets.all(0),contentPadding: EdgeInsets.all(0)),
       content: Container(
         height: heightContainer,
         width: widthScreen,
         child: FamAlertDialogComponent(
-            addImageOption: addImageOption,
-            addSpecificComponentOption: addSpecificComponentOption,
             imagePath: imagePath,
             mainTitle: mainTitle,
-            subTitle: subTitle,disappearAuto: disappearAuto,
+            subTitle: subTitle,
+            disappearAuto: disappearAuto,
             specificComponent: specificComponent,
             buttons: buttons),
       ),
@@ -34,9 +32,7 @@ class FamAlertDialog {
 }
 
 class FamAlertDialogComponent extends StatefulWidget {
-  final bool addImageOption;
   final bool disappearAuto;
-  final bool addSpecificComponentOption;
   final String imagePath;
   final String mainTitle;
   final String subTitle;
@@ -45,8 +41,6 @@ class FamAlertDialogComponent extends StatefulWidget {
 
   FamAlertDialogComponent({
     Key key,
-    this.addImageOption,
-    this.addSpecificComponentOption = false,
     this.disappearAuto = false,
     this.imagePath,
     this.mainTitle,
@@ -63,7 +57,8 @@ class FamAlertDialogComponent extends StatefulWidget {
 class _FamAlertDialogComponentState extends State<FamAlertDialogComponent> {
   @override
   Widget build(BuildContext context) {
-    if (widget.disappearAuto) Future.delayed(Duration(seconds: 3), () {
+    if (widget.disappearAuto)
+      Future.delayed(Duration(seconds: 3), () {
         Navigator.of(context).pop(true);
       });
     return Scaffold(
@@ -80,8 +75,8 @@ class _FamAlertDialogComponentState extends State<FamAlertDialogComponent> {
                 color: Colors.white),
             child: Column(
               children: [
-                if (widget.addImageOption) SizedBox(height: 16),
-                if (widget.addImageOption)
+                if (widget.imagePath != null) SizedBox(height: 16),
+                if (widget.imagePath != null)
                   Container(
                       child: (widget.imagePath.contains('http'))
                           ? Image.network(widget.imagePath,
@@ -109,7 +104,7 @@ class _FamAlertDialogComponentState extends State<FamAlertDialogComponent> {
                       heightText: 1.4,
                       width: widthScreen / 1.7,
                       margin: EdgeInsets.only(top: 8, bottom: 22)),
-                if (widget.addSpecificComponentOption)
+                if (widget.specificComponent != null)
                   Container(
                       padding: EdgeInsets.all(0),
                       color: Color(0xffF4F5F8),
