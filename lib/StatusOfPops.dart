@@ -63,7 +63,7 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                     ),
                   ],
                   subTitle: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
-                  heightContainer: MediaQuery.of(context).size.height - 120),
+                  heightContainer: MediaQuery.of(context).size.height - 30),
 
               child: Text('Default State'),
               color: Colors.orange[200],
