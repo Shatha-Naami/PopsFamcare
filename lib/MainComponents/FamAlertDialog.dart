@@ -4,30 +4,41 @@ import 'package:flutter/material.dart';
 import 'package:ndialog/ndialog.dart';
 
 class FamAlertDialog {
-  static showDialog(
-      {BuildContext context,
-      double heightContainer,
-      String imagePath,
-      bool disappearAuto = false,
-      String mainTitle,
-      String subTitle,
-      Widget specificComponent,
-      List<Widget> buttons}) {
+  static show({
+    BuildContext context,
+    double height,
+    String image,
+    String title,
+    String description,
+    Widget child,
+    List<Widget> buttons,
+    bool disappearAuto = false,
+  }) {
     NAlertDialog(
-      title: null, dialogStyle: DialogStyle(titlePadding: EdgeInsets.all(0),contentPadding: EdgeInsets.all(0)),
-      content: Container(
-        height: heightContainer,
-        width: widthScreen,
-        child: FamAlertDialogComponent(
-            imagePath: imagePath,
-            mainTitle: mainTitle,
-            subTitle: subTitle,
-            disappearAuto: disappearAuto,
-            specificComponent: specificComponent,
-            buttons: buttons),
+      title: null,
+      dialogStyle: DialogStyle(
+        titlePadding: EdgeInsets.all(0),
+        contentPadding: EdgeInsets.all(0),
       ),
       blur: 16,
-    ).show(context, transitionType: DialogTransitionType.Shrink);
+      content: Container(
+        height: height,
+        width: screenWidth,
+        // TODO merge FamAlertDialogComponent and FamAlertDialog into single class
+        // TODO rename the param as we did for the parent widget
+        child: FamAlertDialogComponent(
+          imagePath: image,
+          mainTitle: title,
+          subTitle: description,
+          disappearAuto: disappearAuto,
+          specificComponent: child,
+          buttons: buttons,
+        ),
+      ),
+    ).show(
+      context,
+      transitionType: DialogTransitionType.Shrink,
+    );
   }
 }
 
@@ -56,69 +67,88 @@ class FamAlertDialogComponent extends StatefulWidget {
 
 class _FamAlertDialogComponentState extends State<FamAlertDialogComponent> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     if (widget.disappearAuto)
       Future.delayed(Duration(seconds: 3), () {
         Navigator.of(context).pop(true);
       });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      child: ListView(
-        padding: EdgeInsets.all(0),
-        shrinkWrap: true,
-        children: [
-          Container(
-            width: widthScreen,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
+      body: Container(
+        child: ListView(
+          padding: EdgeInsets.all(0),
+          shrinkWrap: true,
+          children: [
+            Container(
+              width: screenWidth,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: Colors.white),
-            child: Column(
-              children: [
-                if (widget.imagePath != null) SizedBox(height: 16),
-                if (widget.imagePath != null)
-                  Container(
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  // todo remove the duplicated if statements
+                  if (widget.imagePath != null) SizedBox(height: 16),
+                  if (widget.imagePath != null)
+                    Container(
+                      // todo extract this logic to a FCImage (FC = FamCare)
                       child: (widget.imagePath.contains('http'))
-                          ? Image.network(widget.imagePath,
+                          ? Image.network(
+                              widget.imagePath,
                               fit: BoxFit.contain,
-                              height: widthScreen / 4,
-                              width: widthScreen)
-                          : Image.asset(widget.imagePath,
+                              height: screenWidth / 4,
+                              width: screenWidth,
+                            )
+                          : Image.asset(
+                              widget.imagePath,
                               fit: BoxFit.contain,
-                              height: widthScreen / 1.9,
-                              width: widthScreen)),
-                MessagesComponents(
-                    title: widget.mainTitle,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                    fontFamily: 'Famtree-Medium',
-                    width: widthScreen,
-                    margin: widget.subTitle != null
-                        ? EdgeInsets.only(top: 36, bottom: 8)
-                        : EdgeInsets.only(top: 8, bottom: 32)),
-                if (widget.subTitle != null)
+                              height: screenWidth / 1.9,
+                              width: screenWidth,
+                            ),
+                    ),
                   MessagesComponents(
+                      title: widget.mainTitle,
+                      // TODO try to use a custom famcare theme text style
+                      // style: Theme.of(context).fcTextTheme.title
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      fontFamily: 'Famtree-Medium',
+                      width: screenWidth,
+                      // todo try to use margin with the bottom widget not the top widget
+                      margin: widget.subTitle != null
+                          ? EdgeInsets.only(top: 36, bottom: 8)
+                          : EdgeInsets.only(top: 8, bottom: 32)),
+                  // todo replace if with visibility?? R&D best practices
+                  if (widget.subTitle != null)
+                    MessagesComponents(
                       title: widget.subTitle,
                       fontWeight: FontWeight.w500,
                       fontSize: 18,
                       heightText: 1.4,
-                      width: widthScreen / 1.7,
-                      margin: EdgeInsets.only(top: 8, bottom: 22)),
-                if (widget.specificComponent != null)
+                      width: screenWidth / 1.7,
+                      margin: EdgeInsets.only(top: 8, bottom: 22),
+                    ),
+                  if (widget.specificComponent != null)
+                    Container(
+                        padding: EdgeInsets.all(0),
+                        color: Color(0xffF4F5F8),
+                        child: widget.specificComponent),
                   Container(
-                      padding: EdgeInsets.all(0),
-                      color: Color(0xffF4F5F8),
-                      child: widget.specificComponent),
-                Container(
-                  padding: EdgeInsets.all(0),
-                  color: Color(0xffF4F5F8),
-                  child: Column(children: widget.buttons),
-                )
-              ],
-            ),
-          )
-        ],
+                    padding: EdgeInsets.all(0),
+                    color: Color(0xffF4F5F8),
+                    child: Column(children: widget.buttons),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

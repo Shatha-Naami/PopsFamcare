@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CalenderComponent extends StatelessWidget {
+class Calender extends StatelessWidget {
   final String title;
   final String titleDay;
   final int date;
@@ -8,7 +8,7 @@ class CalenderComponent extends StatelessWidget {
   final String time;
   final String fontFamily;
 
-  CalenderComponent(
+  Calender(
       {Key key,
       this.titleDay,
       this.title,

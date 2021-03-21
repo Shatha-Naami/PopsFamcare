@@ -1,7 +1,7 @@
 import 'package:famcare/Utils/StaticData.dart';
 import 'package:flutter/material.dart';
 
-class ButtonComponent extends StatelessWidget {
+class FamAlertButton extends StatelessWidget {
   final String title;
   final Color color;
   final Color background;
@@ -10,7 +10,7 @@ class ButtonComponent extends StatelessWidget {
   final String fontFamily;
   final FontWeight fontWeight;
 
-  ButtonComponent(
+  FamAlertButton(
       {Key key,
       this.onTapped,
       this.title,
@@ -28,7 +28,7 @@ class ButtonComponent extends StatelessWidget {
         children: [
           Divider(height: 1, thickness: 0.8),
           Container(
-            width: widthScreen,
+            width: screenWidth,
             color: background,
             alignment: Alignment.center,
             padding: EdgeInsets.only(top: 22, bottom: 22),

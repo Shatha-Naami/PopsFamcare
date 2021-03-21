@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: key,
       debugShowCheckedModeBanner: false,
       home: StatusOfPops(),
+      // TODO use the material app theme / custom theme
     );
   }
 }

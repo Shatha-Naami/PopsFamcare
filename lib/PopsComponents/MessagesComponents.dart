@@ -23,14 +23,18 @@ class MessagesComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Text(title,
-            style: TextStyle(
-                fontWeight: fontWeight,
-                fontSize: fontSize,
-                height: heightText,
-                fontFamily: fontFamily),
-            textAlign: TextAlign.center),
-        margin: margin,
-        width: width);
+      child: Text(
+        title,
+        style: TextStyle(
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+          height: heightText,
+          fontFamily: fontFamily,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      margin: margin,
+      width: width,
+    );
   }
 }
