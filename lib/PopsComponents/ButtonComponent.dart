@@ -3,22 +3,12 @@ import 'package:flutter/material.dart';
 
 class FamAlertButton extends StatelessWidget {
   final String title;
-  final Color color;
   final Color background;
-  final double size;
   final Function onTapped;
-  final String fontFamily;
-  final FontWeight fontWeight;
+  final TextStyle style;
 
-  FamAlertButton(
-      {Key key,
-      this.onTapped,
-      this.title,
-      this.fontWeight,
-      this.color,
-      this.size,
-      this.background,
-      this.fontFamily = 'Famtree-Regular'})
+  FamAlertButton(this.title,
+      {Key key, this.onTapped, this.background, this.style})
       : super(key: key);
 
   @override
@@ -32,12 +22,7 @@ class FamAlertButton extends StatelessWidget {
             color: background,
             alignment: Alignment.center,
             padding: EdgeInsets.only(top: 22, bottom: 22),
-            child: Text(title,
-                style: TextStyle(
-                    fontFamily: fontFamily,
-                    fontWeight: fontWeight,
-                    color: color,
-                    fontSize: size)),
+            child: Text(title, style: style),
           ),
         ],
       ),

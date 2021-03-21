@@ -1,7 +1,8 @@
 import 'package:famcare/MainComponents/FamAlertDialog.dart';
 import 'package:famcare/PopsComponents/ButtonComponent.dart';
-import 'package:famcare/PopsComponents/CalenderComponent.dart';
+import 'package:famcare/PopsComponents/SessionTime.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class StatusOfPops extends StatefulWidget {
   @override
@@ -9,6 +10,8 @@ class StatusOfPops extends StatefulWidget {
 }
 
 class _StatusOfPopsState extends State<StatusOfPops> {
+  DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,284 +31,165 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                   title: 'تأكيد الإلغاء',
                   description: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
                   // TODO choose a better name nested of Calender
-                  child: Calender(
-                    title: 'توقيت الجلسة',
-                    // todo replace with a datetime object
-                    titleDay: 'الثلاثاء',
-                    date: 13,
-                    month: '(7) يوليو',
-                    time: 'م 06:00 - 5:30 م',
-                  ),
+                  child: SessionTime(dateFormat.parse("2019-07-19 8:40:23")),
                   buttons: [
                     // TODO deal with title as required not named param
-                    FamAlertButton(
-                        title: 'تعديل الموعد',
+                    FamAlertButton('تعديل الموعد',
                         // todo to be replaced with custom primary button or button type
-                        color: Color(0xff7F7FF8),
-                        size: 20,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Famtree-Medium',
+                        style: Theme.of(context).textTheme.display1,
                         background: Color(0xffF4F5F8),
-                        onTapped: () {
-                          Navigator.pop(context);
-                          print('change time');
-                        }),
-                    FamAlertButton(
-                        title: 'تراجع',
-                        color: Colors.black,
+                        onTapped: () => Navigator.pop(context)),
+                    FamAlertButton('تراجع',
                         background: Color(0xffF4F5F8),
-                        size: 20,
-                        onTapped: () {
-                          Navigator.pop(context);
-                          print('back');
-                        }),
-                    FamAlertButton(
-                      title: 'نعم, إلغاء الجلسة',
-                      color: Color(0xffBDC2CF),
-                      background: Colors.white,
-                      size: 18,
-                      onTapped: () {
-                        Navigator.pop(context);
-                        print('cancel');
-                      },
-                    ),
+                        style: Theme.of(context).textTheme.display2,
+                        onTapped: () => Navigator.pop(context)),
+                    FamAlertButton('نعم, إلغاء الجلسة',
+                        background: Colors.white,
+                        style: Theme.of(context).textTheme.display3,
+                        onTapped: () => Navigator.pop(context)),
                   ],
                 ),
+              ),
+              SizedBox(height: 32),
+              FlatButton(
+                child: Text('Without Photo'),
+                color: Colors.pink[200],
+                onPressed: () => FamAlertDialog.show(
+                  context: context,
+                  height: MediaQuery.of(context).size.width * 1.26,
+                  title: 'تأكيد الإلغاء',
+                  description: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
+                  child: SessionTime(dateFormat.parse("2019-07-19 8:40:23")),
+                  buttons: [
+                    FamAlertButton('تعديل الموعد',
+                        style: Theme.of(context).textTheme.display1,
+                        background: Color(0xffF4F5F8),
+                        onTapped: () => Navigator.pop(context)),
+                    FamAlertButton('تراجع',
+                        background: Color(0xffF4F5F8),
+                        style: Theme.of(context).textTheme.display2,
+                        onTapped: () => Navigator.pop(context)),
+                    FamAlertButton('نعم, إلغاء الجلسة',
+                        background: Colors.white,
+                        style: Theme.of(context).textTheme.display3,
+                        onTapped: () => Navigator.pop(context)),
+                  ],
+                ),
+              ),
+              SizedBox(height: 32),
+              FlatButton(
+                child: Text('Without Calender'),
+                color: Colors.purple[200],
+                onPressed: () => FamAlertDialog.show(
+                  context: context,
+                  height: MediaQuery.of(context).size.width * 1.5,
+                  image: 'assets/images/cancel_image.png',
+                  title: 'تأكيد الإلغاء',
+                  description: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
+                  buttons: [
+                    FamAlertButton('تعديل الموعد',
+                        style: Theme.of(context).textTheme.display1,
+                        background: Color(0xffF4F5F8),
+                        onTapped: () => Navigator.pop(context)),
+                    FamAlertButton('تراجع',
+                        background: Color(0xffF4F5F8),
+                        style: Theme.of(context).textTheme.display2,
+                        onTapped: () => Navigator.pop(context)),
+                    FamAlertButton('نعم, إلغاء الجلسة',
+                        background: Colors.white,
+                        style: Theme.of(context).textTheme.display3,
+                        onTapped: () => Navigator.pop(context)),
+                  ],
+               ),
               ),
               SizedBox(height: 32),
               FlatButton(
                 onPressed: () => FamAlertDialog.show(
                   context: context,
+                  height: MediaQuery.of(context).size.width * 0.93,
                   title: 'تأكيد الإلغاء',
                   description: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
-                  height: MediaQuery.of(context).size.width * 1.26,
                   buttons: [
-                    FamAlertButton(
-                        title: 'تعديل الموعد',
-                        color: Color(0xff7F7FF8),
-                        size: 20,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Famtree-Medium',
-                        background: Color(0xffF4F5F8),
-                        onTapped: () {
-                          Navigator.pop(context);
-                          print('change time');
-                        }),
-                    FamAlertButton(
-                        title: 'تراجع',
-                        color: Colors.black,
-                        background: Color(0xffF4F5F8),
-                        size: 20,
-                        onTapped: () {
-                          Navigator.pop(context);
-                          print('back');
-                        }),
-                    FamAlertButton(
-                      title: 'نعم, إلغاء الجلسة',
-                      color: Color(0xffBDC2CF),
-                      background: Colors.white,
-                      size: 18,
-                      onTapped: () {
-                        Navigator.pop(context);
-                        print('cancel');
-                      },
-                    ),
-                  ],
-                  child: Calender(
-                      title: 'توقيت الجلسة',
-                      titleDay: 'الثلاثاء',
-                      date: 13,
-                      month: '(7) يوليو',
-                      time: 'م 06:00 - 5:30 م'),
+                      FamAlertButton('تعديل الموعد',
+                          style: Theme.of(context).textTheme.display1,
+                          background: Color(0xffF4F5F8),
+                          onTapped: () => Navigator.pop(context)),
+                      FamAlertButton('تراجع',
+                          background: Color(0xffF4F5F8),
+                          style: Theme.of(context).textTheme.display2,
+                          onTapped: () => Navigator.pop(context)),
+                      FamAlertButton('نعم, إلغاء الجلسة',
+                          background: Colors.white,
+                          style: Theme.of(context).textTheme.display3,
+                          onTapped: () => Navigator.pop(context)),
+                    ],
                 ),
-                child: Text('Without Photo'),
-                color: Colors.pink[200],
-              ),
-              SizedBox(height: 32),
-              FlatButton(
-                onPressed: () => FamAlertDialog.show(
-                    image: 'assets/images/cancel_image.png',
-                    context: context,
-                    buttons: [
-                      FamAlertButton(
-                          title: 'تعديل الموعد',
-                          color: Color(0xff7F7FF8),
-                          size: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Famtree-Medium',
-                          background: Color(0xffF4F5F8),
-                          onTapped: () {
-                            Navigator.pop(context);
-                            print('change time');
-                          }),
-                      FamAlertButton(
-                          title: 'تراجع',
-                          color: Colors.black,
-                          background: Color(0xffF4F5F8),
-                          size: 20,
-                          onTapped: () {
-                            Navigator.pop(context);
-                            print('back');
-                          }),
-                      FamAlertButton(
-                        title: 'نعم, إلغاء الجلسة',
-                        color: Color(0xffBDC2CF),
-                        background: Colors.white,
-                        size: 18,
-                        onTapped: () {
-                          Navigator.pop(context);
-                          print('cancel');
-                        },
-                      ),
-                    ],
-                    title: 'تأكيد الإلغاء',
-                    description:
-                        'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
-                    height: MediaQuery.of(context).size.width * 1.5),
-                child: Text('Without Calender'),
-                color: Colors.purple[200],
-              ),
-              SizedBox(height: 32),
-              FlatButton(
-                onPressed: () => FamAlertDialog.show(
-                    buttons: [
-                      FamAlertButton(
-                          title: 'تعديل الموعد',
-                          color: Color(0xff7F7FF8),
-                          size: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Famtree-Medium',
-                          background: Color(0xffF4F5F8),
-                          onTapped: () {
-                            Navigator.pop(context);
-                            print('change time');
-                          }),
-                      FamAlertButton(
-                          title: 'تراجع',
-                          color: Colors.black,
-                          background: Color(0xffF4F5F8),
-                          size: 20,
-                          onTapped: () {
-                            Navigator.pop(context);
-                            print('back');
-                          }),
-                      FamAlertButton(
-                        title: 'نعم, إلغاء الجلسة',
-                        color: Color(0xffBDC2CF),
-                        background: Colors.white,
-                        size: 18,
-                        onTapped: () {
-                          Navigator.pop(context);
-                          print('cancel');
-                        },
-                      ),
-                    ],
-                    title: 'تأكيد الإلغاء',
-                    description:
-                        'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
-                    context: context,
-                    height: MediaQuery.of(context).size.width * 0.93),
                 child: Text('Without Photo & Without Calender'),
                 color: Colors.amberAccent[200],
               ),
               SizedBox(height: 32),
               FlatButton(
                 onPressed: () => FamAlertDialog.show(
-                    context: context,
-                    title: 'تأكيد الإلغاء',
-                    description:
-                        'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
+                  context: context,
+                  height: MediaQuery.of(context).size.width * 0.75,
+                  title: 'تأكيد الإلغاء',
+                    description: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
                     buttons: [
-                      FamAlertButton(
-                          title: 'تعديل الموعد',
-                          color: Color(0xff7F7FF8),
-                          size: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Famtree-Medium',
+                      FamAlertButton('تعديل الموعد',
+                          style: Theme.of(context).textTheme.display1,
                           background: Color(0xffF4F5F8),
-                          onTapped: () {
-                            Navigator.pop(context);
-                            print('change time');
-                          }),
-                      FamAlertButton(
-                        title: 'نعم, إلغاء الجلسة',
-                        color: Color(0xffBDC2CF),
-                        background: Colors.white,
-                        size: 18,
-                        onTapped: () {
-                          Navigator.pop(context);
-                          print('cancel');
-                        },
-                      ),
+                          onTapped: () => Navigator.pop(context)),
+                      FamAlertButton('نعم, إلغاء الجلسة',
+                          background: Colors.white,
+                          style: Theme.of(context).textTheme.display3,
+                          onTapped: () => Navigator.pop(context)),
                     ],
-                    height: MediaQuery.of(context).size.width * 0.75),
+                ),
                 child: Text('Without Photo & Without Calender & Without Back'),
                 color: Colors.lightBlue[200],
               ),
               SizedBox(height: 32),
               FlatButton(
-                onPressed: () => FamAlertDialog.show(
-                    image:
-                        'https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/preview_image/tutorial-preview-small.png',
-                    child: Calender(
-                        title: 'توقيت الجلسة',
-                        titleDay: 'الثلاثاء',
-                        date: 13,
-                        month: '(7) يوليو',
-                        time: 'م 06:00 - 5:30 م'),
-                    title: 'تم حجز الجلسة بنجاح',
-                    // subTitle: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
-                    buttons: [
-                      FamAlertButton(
-                          title: 'أضف تنبيه للتقويم',
-                          color: Color(0xff7F7FF8),
-                          size: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Famtree-Medium',
-                          background: Color(0xffF4F5F8),
-                          onTapped: () {
-                            Navigator.pop(context);
-                            print('change time');
-                          }),
-                      FamAlertButton(
-                          title: 'إغلاق',
-                          color: Colors.black,
-                          background: Color(0xffF4F5F8),
-                          size: 20,
-                          onTapped: () {
-                            Navigator.pop(context);
-                            print('back');
-                          }),
-                    ],
-                    context: context,
-                    disappearAuto: true,
-                    height: MediaQuery.of(context).size.width * 1.15),
                 child: Text('Success Item'),
                 color: Colors.tealAccent[200],
+                onPressed: () => FamAlertDialog.show(
+                     context: context,
+                    height: MediaQuery.of(context).size.width * 1.15,
+                    image: 'https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/preview_image/tutorial-preview-small.png',
+                  title: 'تم حجز الجلسة بنجاح',
+                  child: SessionTime(dateFormat.parse("2019-07-19 8:40:23")),
+                    buttons: [
+                      FamAlertButton('أضف تنبيه للتقويم',
+                          style: Theme.of(context).textTheme.display1,
+                          background: Color(0xffF4F5F8),
+                          onTapped: () => Navigator.pop(context)),
+                      FamAlertButton('إغلاق',
+                          background: Colors.white,
+                          style: Theme.of(context).textTheme.display3,
+                          onTapped: () => Navigator.pop(context)),
+                    ],
+                  disappearAuto: true,
+                ),
               ),
               SizedBox(height: 32),
               FlatButton(
-                onPressed: () => FamAlertDialog.show(
-                    image:
-                        'https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/preview_image/tutorial-preview-small.png',
-                    title: 'تم إلغاء الجلسة',
-                    description: 'ننتظركم في جلسة جديدة',
-                    context: context,
-                    buttons: [
-                      FamAlertButton(
-                          title: 'إغلاق',
-                          color: Colors.black,
-                          background: Color(0xffF4F5F8),
-                          size: 20,
-                          onTapped: () {
-                            Navigator.pop(context);
-                            print('back');
-                          }),
-                    ],
-                    disappearAuto: true,
-                    height: MediaQuery.of(context).size.width * 0.78),
                 child: Text('Cancel Meeting'),
                 color: Colors.red[200],
+                onPressed: () => FamAlertDialog.show(
+                    context: context,
+                   height: MediaQuery.of(context).size.width * 0.78,
+                    image: 'https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/preview_image/tutorial-preview-small.png',
+                    title: 'تم إلغاء الجلسة',
+                    description: 'ننتظركم في جلسة جديدة',
+                    buttons: [
+                      FamAlertButton('تراجع',
+                          background: Color(0xffF4F5F8),
+                          style: Theme.of(context).textTheme.display2,
+                          onTapped: () => Navigator.pop(context)),
+                    ],
+                    disappearAuto: true,
+                ),
+
               )
             ],
           ),

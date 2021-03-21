@@ -1,22 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as Date;
 
-class Calender extends StatelessWidget {
-  final String title;
-  final String titleDay;
-  final int date;
-  final String month;
-  final String time;
-  final String fontFamily;
+class SessionTime extends StatelessWidget {
+  final DateTime date;
 
-  Calender(
-      {Key key,
-      this.titleDay,
-      this.title,
-      this.date,
-      this.month,
-      this.time,
-      this.fontFamily = 'Famtree-Regular'})
-      : super(key: key);
+  SessionTime(this.date);
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +28,22 @@ class Calender extends StatelessWidget {
                     margin: EdgeInsets.only(top: 6),
                     padding:
                         EdgeInsets.only(left: 56, right: 56, top: 3, bottom: 3),
-                    child: Text(title,
+                    child: Text('توقيت الجلسة',
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 16,
-                            fontFamily: fontFamily),
+                            fontFamily: 'Famtree-Regular'),
                         textAlign: TextAlign.center),
                   ),
                   Spacer(),
                   Container(
                     margin: EdgeInsets.only(bottom: 12),
-                    child: Text(time,
+                    child: Text(
+                        'م ${date.hour.toString()} - ${DateTime.now().hour.toString()} م',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            fontFamily: fontFamily),
+                            fontFamily: 'Famtree-Regular'),
                         textAlign: TextAlign.center),
                   ),
                   Spacer(),
@@ -80,30 +69,31 @@ class Calender extends StatelessWidget {
                     margin: EdgeInsets.only(top: 6),
                     padding:
                         EdgeInsets.only(left: 22, right: 22, top: 3, bottom: 3),
-                    child: Text(titleDay,
+                    child: Text(Date.DateFormat('EEEE').format(date),
                         style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 16,
-                            fontFamily: fontFamily),
+                            fontFamily: 'Famtree-Regular'),
                         textAlign: TextAlign.center),
                   ),
                   SizedBox(height: 12),
                   Container(
-                    child: Text(date.toString(),
+                    child: Text(date.day.toString(),
                         style: TextStyle(
-                            fontFamily: fontFamily,
+                            fontFamily: 'Famtree-Regular',
                             fontWeight: FontWeight.bold,
                             fontSize: 28),
                         textAlign: TextAlign.center),
                   ),
                   Container(
                     margin: EdgeInsets.all(0),
-                    child: Text(month,
+                    child: Text(
+                        '(${date.month.toString()}) ${months[date.month]}',
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
-                            fontFamily: fontFamily),
+                            fontFamily: 'Famtree-Regular'),
                         textAlign: TextAlign.center),
                   ),
                 ],
@@ -115,4 +105,19 @@ class Calender extends StatelessWidget {
       ),
     );
   }
+
+  List<String> months = [
+    'يناير',
+    'فبراير',
+    'مارس',
+    'ابريل',
+    'مايو',
+    'يونيو',
+    'يوليو',
+    'أغسطس',
+    'سبتمبر',
+    'أكتوبر',
+    'نوفمبر',
+    'ديسمبر'
+  ];
 }
