@@ -1,6 +1,6 @@
-import 'package:famcare/FCImage.dart';
-import 'package:famcare/PopsComponents/FamMessagesInfo.dart';
-import 'package:famcare/Utils/StaticData.dart';
+import 'package:famcare/PopsWiedget/FCImage.dart';
+import 'package:famcare/PopsWiedget/PopsComponents/FamMessagesInfo.dart';
+import 'package:famcare/PopsWiedget/Utils/StaticData.dart';
 import 'package:famcare/main.dart';
 import 'package:flutter/material.dart';
 import 'package:ndialog/ndialog.dart';

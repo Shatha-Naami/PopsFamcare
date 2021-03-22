@@ -1,6 +1,6 @@
-import 'package:famcare/MainComponents/FamAlertDialog.dart';
-import 'package:famcare/PopsComponents/FamAlertButton.dart';
-import 'package:famcare/PopsComponents/SessionTime.dart';
+import 'package:famcare/PopsWiedget/MainComponents/FamAlertDialog.dart';
+import 'package:famcare/PopsWiedget/PopsComponents/FamAlertButton.dart';
+import 'package:famcare/PopsWiedget/PopsComponents/SessionTime.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

@@ -1,4 +1,4 @@
-import 'package:famcare/Utils/StaticData.dart';
+import 'package:famcare/PopsWiedget/Utils/StaticData.dart';
 import 'package:flutter/material.dart';
 
 class FCImage extends StatelessWidget {
