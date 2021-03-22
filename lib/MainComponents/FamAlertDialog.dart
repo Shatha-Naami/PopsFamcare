@@ -1,6 +1,7 @@
 import 'package:famcare/FCImage.dart';
 import 'package:famcare/PopsComponents/FamMessagesInfo.dart';
 import 'package:famcare/Utils/StaticData.dart';
+import 'package:famcare/main.dart';
 import 'package:flutter/material.dart';
 import 'package:ndialog/ndialog.dart';
 
@@ -26,7 +27,6 @@ class FamAlertDialog extends StatefulWidget {
   _FamAlertDialogState createState() => _FamAlertDialogState();
 
   static show({
-    BuildContext context,
     double height,
     String image,
     String title,
@@ -57,7 +57,7 @@ class FamAlertDialog extends StatefulWidget {
         ),
       ),
     ).show(
-      context,
+      key.currentContext,
       transitionType: DialogTransitionType.Shrink,
     );
   }

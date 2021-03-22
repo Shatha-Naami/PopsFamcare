@@ -25,7 +25,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                 child: Text('Default State'),
                 color: Colors.orange[200],
                 onPressed: () => FamAlertDialog.show(
-                  context: context,
                   height: MediaQuery.of(context).size.height - 30,
                   image: 'assets/images/cancel_image.png',
                   title: 'تأكيد الإلغاء',
@@ -55,7 +54,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                 child: Text('Without Photo'),
                 color: Colors.pink[200],
                 onPressed: () => FamAlertDialog.show(
-                  context: context,
                   height: MediaQuery.of(context).size.width * 1.26,
                   title: 'تأكيد الإلغاء',
                   description: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
@@ -81,7 +79,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                 child: Text('Without Calender'),
                 color: Colors.purple[200],
                 onPressed: () => FamAlertDialog.show(
-                  context: context,
                   height: MediaQuery.of(context).size.width * 1.5,
                   image: 'assets/images/cancel_image.png',
                   title: 'تأكيد الإلغاء',
@@ -105,7 +102,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
               SizedBox(height: 32),
               FlatButton(
                 onPressed: () => FamAlertDialog.show(
-                  context: context,
                   height: MediaQuery.of(context).size.width * 0.93,
                   title: 'تأكيد الإلغاء',
                   description: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
@@ -130,7 +126,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
               SizedBox(height: 32),
               FlatButton(
                 onPressed: () => FamAlertDialog.show(
-                  context: context,
                   height: MediaQuery.of(context).size.width * 0.75,
                   title: 'تأكيد الإلغاء',
                     description: 'نأسف, لا يوجد مستشارين متاحين تم إنهاء الجلسة',
@@ -153,7 +148,6 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                 child: Text('Success Item'),
                 color: Colors.tealAccent[200],
                 onPressed: () => FamAlertDialog.show(
-                     context: context,
                     height: MediaQuery.of(context).size.width * 1.15,
                     image: 'https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/preview_image/tutorial-preview-small.png',
                   title: 'تم حجز الجلسة بنجاح',
@@ -176,8 +170,7 @@ class _StatusOfPopsState extends State<StatusOfPops> {
                 child: Text('Cancel Meeting'),
                 color: Colors.red[200],
                 onPressed: () => FamAlertDialog.show(
-                    context: context,
-                   height: MediaQuery.of(context).size.width * 0.78,
+                  height: MediaQuery.of(context).size.width * 0.78,
                     image: 'https://cms-assets.tutsplus.com/uploads/users/523/posts/32694/preview_image/tutorial-preview-small.png',
                     title: 'تم إلغاء الجلسة',
                     description: 'ننتظركم في جلسة جديدة',
