@@ -29,10 +29,10 @@ class SessionTime extends StatelessWidget {
                     padding:
                         EdgeInsets.only(left: 56, right: 56, top: 3, bottom: 3),
                     child: Text('توقيت الجلسة',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
+                        style: Theme.of(context).textTheme.display3.copyWith(
                             fontSize: 16,
-                            fontFamily: 'Famtree-Regular'),
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black),
                         textAlign: TextAlign.center),
                   ),
                   Spacer(),
@@ -40,10 +40,10 @@ class SessionTime extends StatelessWidget {
                     margin: EdgeInsets.only(bottom: 12),
                     child: Text(
                         'م ${date.hour.toString()} - ${DateTime.now().hour.toString()} م',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
+                        style: Theme.of(context).textTheme.display3.copyWith(
                             fontSize: 20,
-                            fontFamily: 'Famtree-Regular'),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                         textAlign: TextAlign.center),
                   ),
                   Spacer(),

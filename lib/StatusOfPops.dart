@@ -1,5 +1,5 @@
 import 'package:famcare/MainComponents/FamAlertDialog.dart';
-import 'package:famcare/PopsComponents/ButtonComponent.dart';
+import 'package:famcare/PopsComponents/FamAlertButton.dart';
 import 'package:famcare/PopsComponents/SessionTime.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

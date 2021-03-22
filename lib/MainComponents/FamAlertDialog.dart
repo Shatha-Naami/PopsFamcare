@@ -1,5 +1,5 @@
 import 'package:famcare/FCImage.dart';
-import 'package:famcare/PopsComponents/MessagesComponents.dart';
+import 'package:famcare/PopsComponents/FamMessagesInfo.dart';
 import 'package:famcare/Utils/StaticData.dart';
 import 'package:flutter/material.dart';
 import 'package:ndialog/ndialog.dart';
@@ -94,7 +94,7 @@ class _FamAlertDialogState extends State<FamAlertDialog> {
                   Visibility(
                       child: FCImage(image: widget.image),
                       visible: widget.image != null),
-                  MessagesComponents(
+                  FamMessagesInfo(
                     title: widget.title,
                     // TODO try to use a custom famcare theme text style
                     style: Theme.of(context).textTheme.title,
@@ -105,7 +105,7 @@ class _FamAlertDialogState extends State<FamAlertDialog> {
                   // todo replace if with visibility?? R&D best practices
                   Visibility(
                     visible: widget.description != null,
-                    child: MessagesComponents(
+                    child: FamMessagesInfo(
                       title: widget.description,
                       style: Theme.of(context).textTheme.display4,
                       width: screenWidth / 1.7,
