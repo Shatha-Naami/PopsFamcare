@@ -37,7 +37,6 @@ class BodyPackagesCard extends StatelessWidget {
         ),
         Icon(
           iconData,
-          // Icons.credit_card,
           color: Color(0xff3A3855),
         ),
       ],
@@ -45,8 +44,6 @@ class BodyPackagesCard extends StatelessWidget {
   }
 
   String getCompleteDay(DateTime dateTime) {
-    // return '${dateTime.year}/${dateTime.month}/${dateTime.day}';
-    // print('${dateTime.day.toString()}');
     return '${dateTime.toString().split(' ').first}';
   }
 }
