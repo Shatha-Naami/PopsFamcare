@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class BodyPackagesCard extends StatelessWidget {
   DateTime dateTime;
@@ -44,6 +45,11 @@ class BodyPackagesCard extends StatelessWidget {
   }
 
   String getCompleteDay(DateTime dateTime) {
-    return '${dateTime.toString().split(' ').first}';
+    DateFormat dateFormat = DateFormat("yyyy-MM-dd");
+    if (dateTime != null) {
+      String string = dateFormat.format(dateTime);
+      return string;
+    }
+    return '';
   }
 }

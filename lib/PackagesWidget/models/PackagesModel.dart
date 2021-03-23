@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 
 PackageModel welcomeFromJson(String str) => PackageModel.fromJson(json.decode(str));
@@ -7,119 +8,179 @@ String welcomeToJson(PackageModel data) => json.encode(data.toJson());
 class PackageModel {
   PackageModel({
     this.data,
+    this.links,
+    this.meta,
   });
 
   List<PackageData> data;
+  Links links;
+  Meta meta;
 
   factory PackageModel.fromJson(Map<String, dynamic> json) => PackageModel(
     data: List<PackageData>.from(json["data"].map((x) => PackageData.fromJson(x))),
+    links: Links.fromJson(json["links"]),
+    meta: Meta.fromJson(json["meta"]),
   );
 
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(data.map((x) => x.toJson())),
+    "links": links.toJson(),
+    "meta": meta.toJson(),
   };
 }
 
 class PackageData {
   PackageData({
     this.id,
-    this.name,
-    this.description,
+    this.title,
+    this.total,
+    this.paymentMethod,
+    this.paidAt,
+    this.canRefund,
+    this.financialText,
+    this.orderId,
     this.type,
-    this.price,
-    this.regularPrice,
-    this.hasFreeSession,
-    this.validCoupons,
-    this.currency,
+    this.status,
+    this.usedSessionCount,
+    this.sessionCount,
   });
 
   int id;
-  String name;
-  String description;
+  String title;
+  String total;
+  String paymentMethod;
+  DateTime paidAt;
+  bool canRefund;
+  String financialText;
+  int orderId;
   String type;
-  int price;
-  int regularPrice;
-  bool hasFreeSession;
-  List<ValidCoupon> validCoupons;
-  String currency;
+  String status;
+  int usedSessionCount;
+  int sessionCount;
 
   factory PackageData.fromJson(Map<String, dynamic> json) => PackageData(
     id: json["id"],
-    name: json["name"],
-    description: json["description"],
+    title: json["title"],
+    total: json["total"],
+    paymentMethod: json["payment_method"],
+    paidAt: DateTime.parse(json["paid_at"]),
+    canRefund: json["can_refund"],
+    financialText: json["financial_text"],
+    orderId: json["order_id"],
     type: json["type"],
-    price: json["price"],
-    regularPrice: json["regular_price"],
-    hasFreeSession: json["has_free_session"],
-    validCoupons: List<ValidCoupon>.from(json["valid_coupons"].map((x) => ValidCoupon.fromJson(x))),
-    currency: json["currency"],
+    status: json["status"],
+    usedSessionCount: json["used_session_count"],
+    sessionCount: json["session_count"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "name": name,
-    "description": description,
+    "title": title,
+    "total": total,
+    "payment_method": paymentMethod,
+    "paid_at": paidAt.toIso8601String(),
+    "can_refund": canRefund,
+    "financial_text": financialText,
+    "order_id": orderId,
     "type": type,
-    "price": price,
-    "regular_price": regularPrice,
-    "has_free_session": hasFreeSession,
-    "valid_coupons": List<dynamic>.from(validCoupons.map((x) => x.toJson())),
-    "currency": currency,
+    "status": status,
+    "used_session_count": usedSessionCount,
+    "session_count": sessionCount,
   };
 }
 
-class ValidCoupon {
-  ValidCoupon({
-    this.id,
-    this.code,
-    this.discountType,
-    this.amount,
-    this.donor,
+class Links {
+  Links({
+    this.first,
+    this.last,
+    this.prev,
+    this.next,
   });
 
-  int id;
-  String code;
-  String discountType;
-  String amount;
-  Donor donor;
+  String first;
+  String last;
+  dynamic prev;
+  dynamic next;
 
-  factory ValidCoupon.fromJson(Map<String, dynamic> json) => ValidCoupon(
-    id: json["id"],
-    code: json["code"],
-    discountType: json["discount_type"],
-    amount: json["amount"],
-    donor: Donor.fromJson(json["donor"]),
+  factory Links.fromJson(Map<String, dynamic> json) => Links(
+    first: json["first"],
+    last: json["last"],
+    prev: json["prev"],
+    next: json["next"],
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "code": code,
-    "discount_type": discountType,
-    "amount": amount,
-    "donor": donor.toJson(),
+    "first": first,
+    "last": last,
+    "prev": prev,
+    "next": next,
   };
 }
 
-class Donor {
-  Donor({
-    this.id,
-    this.name,
-    this.logo,
+class Meta {
+  Meta({
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.links,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
-  int id;
-  String name;
-  String logo;
+  int currentPage;
+  int from;
+  int lastPage;
+  List<Link> links;
+  String path;
+  int perPage;
+  int to;
+  int total;
 
-  factory Donor.fromJson(Map<String, dynamic> json) => Donor(
-    id: json["id"],
-    name: json["name"],
-    logo: json["logo"],
+  factory Meta.fromJson(Map<String, dynamic> json) => Meta(
+    currentPage: json["current_page"],
+    from: json["from"],
+    lastPage: json["last_page"],
+    links: List<Link>.from(json["links"].map((x) => Link.fromJson(x))),
+    path: json["path"],
+    perPage: json["per_page"],
+    to: json["to"],
+    total: json["total"],
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "logo": logo,
+    "current_page": currentPage,
+    "from": from,
+    "last_page": lastPage,
+    "links": List<dynamic>.from(links.map((x) => x.toJson())),
+    "path": path,
+    "per_page": perPage,
+    "to": to,
+    "total": total,
+  };
+}
+
+class Link {
+  Link({
+    this.url,
+    this.label,
+    this.active,
+  });
+
+  String url;
+  String label;
+  bool active;
+
+  factory Link.fromJson(Map<String, dynamic> json) => Link(
+    url: json["url"] == null ? null : json["url"],
+    label: json["label"],
+    active: json["active"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "url": url == null ? null : url,
+    "label": label,
+    "active": active,
   };
 }

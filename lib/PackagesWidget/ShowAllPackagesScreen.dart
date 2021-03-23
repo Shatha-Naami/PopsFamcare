@@ -10,14 +10,14 @@ class ShowAllPackages extends StatefulWidget {
 }
 
 class _ShowAllPackagesState extends State<ShowAllPackages> {
-  Map<String, dynamic> map;
+  Map<String, dynamic> mapPackageData;
   PackageModel packageModel;
 
   void loadJsonData() async {
     var response = await rootBundle.loadString('assets/json/packages.json');
     setState(() {
-      map = json.decode(response);
-      packageModel = PackageModel.fromJson(map);
+      mapPackageData = json.decode(response);
+      packageModel = PackageModel.fromJson(mapPackageData);
     });
   }
 
@@ -37,19 +37,24 @@ class _ShowAllPackagesState extends State<ShowAllPackages> {
             Container(
               margin: EdgeInsets.only(left: 8, right: 8, top: 44),
               child: ListView.builder(
-                itemCount:  packageModel == null ? 0 : packageModel.data.length,
+                itemCount: packageModel == null ? 0 : packageModel.data.length,
                 itemBuilder: (context, i) {
                   return FamPackagesCard(
                     packagesModel: packageModel.data[i],
-                    onTap: () => print('object'),
                   );
                 },
               ),
             ),
-            if(packageModel == null)
-              CircularProgressIndicator(
-                valueColor:
-                AlwaysStoppedAnimation<Color>(Color(0xff7F7FF8)),
+            if (packageModel == null)
+              Center(
+                child: SizedBox(
+                  height: 60.0,
+                  width: 60.0,
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xff7F7FF8)),
+                  ),
+                ),
               ),
           ],
         ),

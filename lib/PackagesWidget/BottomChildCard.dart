@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BottomChildCard extends StatelessWidget {
-  String title;
-  IconData iconData;
+  String financialText;
   String status;
 
-  BottomChildCard({this.title, this.status, this.iconData});
+  BottomChildCard({this.financialText, this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -13,41 +12,57 @@ class BottomChildCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          title,
+          financialText,
           textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .display3
-              .copyWith(color: getSpecificColor(status)),
+          style: Theme.of(context).textTheme.display3.copyWith(
+                color: getSpecificColor(status),
+              ),
         ),
         SizedBox(width: 12),
         Visibility(
-          visible: iconData != null,
+          visible: getSpecificIcon(status) != null,
           child: Icon(
-            iconData,
-            color: getSpecificColor(
-              status,
-            ),
+            getSpecificIcon(status),
+            color: getSpecificColor(status),
           ),
         ),
       ],
     );
   }
 
+  /// must know all status to complete switch
   Color getSpecificColor(String status) {
     switch (status) {
-      case 'waiting':
+      case 'isCancelled':
         return Color(0xffDE4343);
         break;
-      case 'isCanceled':
+      case 'refunded':
         return Color(0xff3A3855);
         break;
-      case 'done':
+      case 'completed':
         return Color(0xff3A3855);
         break;
 
       default:
         return Color(0xffB9BECC);
+    }
+  }
+
+  /// must know all status to complete switch
+  IconData getSpecificIcon(String status) {
+    switch (status) {
+      case 'isCancelled':
+        return Icons.clean_hands_sharp;
+        break;
+      case 'refunded':
+        return Icons.credit_card;
+        break;
+      case 'completed':
+        return Icons.check;
+        break;
+
+      default:
+        return null;
     }
   }
 }
