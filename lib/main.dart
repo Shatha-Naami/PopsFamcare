@@ -1,8 +1,9 @@
+import 'package:famcare/APIs/counter_screen.dart';
 import 'package:famcare/PackagesWidget/ShowAllPackagesScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(CounterScreen());
 }
 
 final GlobalKey<NavigatorState> key = GlobalKey<NavigatorState>();
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorKey: key,
       debugShowCheckedModeBanner: false,
-      home: ShowAllPackages(),
+      home: CounterScreen(),
       theme: ThemeData(
         fontFamily: 'Famtree-Regular',
         textTheme: TextTheme(
@@ -23,7 +24,6 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w100,
             fontFamily: 'Famtree-Medium',
           ),
-
           title: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 20,

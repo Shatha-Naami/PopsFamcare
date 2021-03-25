@@ -16,6 +16,10 @@ dependencies:
   intl: any
   convert: any
   html: any
+  rxdart: 0.22.0
+  counterapi:
+    path: ../dart_api
+
 
 dev_dependencies:
   flutter_test:
